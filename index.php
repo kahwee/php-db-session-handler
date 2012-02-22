@@ -1,6 +1,6 @@
 <?php
-require('LocalSessionHandler.php');
-$session_handler = new LocalSessionHandler();
+require('ExampleSessionHandler.php');
+$session_handler = new ExampleSessionHandler();
 session_start();
 $_SESSION['User'] = array('username' => 'kahwee', 'country_id' => 'US', 'first_name' => 'Kah Wee', 'last_name' => 'Teng');
 $_SESSION['User']['country_id'] = 'US';

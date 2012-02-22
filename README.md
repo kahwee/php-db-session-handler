@@ -8,10 +8,10 @@ Recommended database session table
 
 ```sql
 CREATE TABLE `sessions` (
-  `id` varchar(63) CHARACTER SET ascii NOT NULL DEFAULT '',
-  `data` text,
-  `expire` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `expire` (`expire`)
+	`id` varchar(63) CHARACTER SET ascii NOT NULL DEFAULT '',
+	`data` text,
+	`expire` int(10) unsigned DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `expire` (`expire`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
