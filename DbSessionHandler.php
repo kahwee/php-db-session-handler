@@ -150,7 +150,7 @@ REPLACE INTO {$this->session_db_table}
 VALUES (:id, :data, :expire);
 SQL
 		);
-		$result = $sth->execute(array(':id' => $id, ':data' => $data, ':expire' => time()));
+		$result = $sth->execute(array(':id' => $id, ':data' => $data, ':expire' => time() + $this->getTimeout()));
 		return $result;
 	}
 
@@ -198,6 +198,13 @@ SQL
 
 	public function __destruct() {
 		session_write_close();
+	}
+
+	/**
+	 * @return integer the number of seconds after which data will be seen as 'garbage' and cleaned up, defaults to 1440 seconds.
+	 */
+	public function getTimeout() {
+		return (int) ini_get('session.gc_maxlifetime');
 	}
 
 }
