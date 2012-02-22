@@ -65,9 +65,5 @@ app/config/database.php
 app/libraries/*
 app/resources/tmp/*
 
-#Yii Framework
-assets/*
-protected/runtime/*
-protected/config/main.local.php
+LocalSessionHandler.php
 error.log
-/.htaccess
