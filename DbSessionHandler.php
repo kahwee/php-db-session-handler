@@ -78,7 +78,12 @@ abstract class DbSessionHandler {
 	 */
 	protected $pdo_timeout_seconds = 1;
 
-	public function __construct() {
+	/**
+	 * @var boolean Start immediately after construction
+	 */
+	protected $session_auto_start = false;
+
+	public function __construct($start=true) {
 		session_cache_expire($this->session_cache_expire_minutes); #2 hours
 		$cache_expire = session_cache_expire();
 		session_cache_limiter('private');
@@ -88,6 +93,9 @@ abstract class DbSessionHandler {
 		);
 		if (!is_null($this->session_name)) {
 			session_name($this->session_name);
+		}
+		if ($this->session_auto_start) {
+			@session_start();
 		}
 		#register_shutdown_function(array($this,'close'));
 	}
